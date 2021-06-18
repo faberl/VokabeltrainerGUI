@@ -29,6 +29,9 @@ namespace VokabeltrainerGUI
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblLanguage1 = new System.Windows.Forms.Label();
             this.lblLanguage2 = new System.Windows.Forms.Label();
             this.cbxLanguage1 = new System.Windows.Forms.ComboBox();
@@ -39,6 +42,8 @@ namespace VokabeltrainerGUI
             this.btnAddWord = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblStats = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblLanguage1
@@ -139,11 +144,28 @@ namespace VokabeltrainerGUI
             this.lblStats.TabIndex = 9;
             this.lblStats.Text = "Current statistics";
             // 
+            // chart1
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(746, 77);
+            this.chart1.Name = "chart1";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(449, 393);
+            this.chart1.TabIndex = 10;
+            this.chart1.Text = "chart1";
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1203, 460);
+            this.ClientSize = new System.Drawing.Size(1232, 504);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.lblStats);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnAddWord);
@@ -157,6 +179,8 @@ namespace VokabeltrainerGUI
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainView";
             this.Text = "Vokabeltrainer";
+            this.Load += new System.EventHandler(this.MainView_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,6 +198,7 @@ namespace VokabeltrainerGUI
         private System.Windows.Forms.Button btnAddWord;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblStats;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
 

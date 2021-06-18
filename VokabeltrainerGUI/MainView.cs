@@ -101,7 +101,11 @@ namespace VokabeltrainerGUI
                 return true;
             }
             
-        }      
+        }
 
+        private void MainView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
