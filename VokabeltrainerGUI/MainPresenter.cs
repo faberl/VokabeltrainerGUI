@@ -7,15 +7,30 @@ namespace VokabeltrainerGUI
     class MainPresenter
     {
         #region members
-        private VocabularyModel _vocabularyList;
-        private Vocabulary _vocabulary;
+        private VocabularyModel vocabularyModel;   
 
         #endregion
- 
-        public MainPresenter(VocabularyModel vocabularylist)
+
+        public MainPresenter(IStorage storage, VocabularyModel vocabularyModel)
+        {   
+            
+            //initialisieren von vocabularyModel 
+            //aufrufen von LoadFromCSV
+        }
+
+        public void Run()
+        {
+            MainPresenter.Show();
+            Application.Run();
+        }
+
+        public void StartTest()
         {
 
         }
+
+
+
 
     }
 }

@@ -12,7 +12,8 @@ namespace VokabeltrainerGUI
 {
     public partial class MainView : Form
     {
-        public MainView()
+
+        public MainView(IStorage storage, PersonListModel model)
         {
             InitializeComponent();
 
@@ -30,39 +31,27 @@ namespace VokabeltrainerGUI
                 cbxLanguage2.Items.Add(languages[i]);
             }
 
+            //Aufrufen von Model für reinladen der CSV Datei
+
             InitializeComponent();
         }
 
+        public void Run()
+        {
+            _mainView.Show();
+            Application.Run();
+        }
 
-        public event EventHandler OnTrainingStartRequested;
 
         public event EventHandler OnTestStartRequested;
-        
-        public event EventHandler OnAddWordRequested;
 
         public event EventHandler OnExitRequested;
 
         #region Click Events
 
-
-        private void tbnStartTraining_Click(object sender, EventArgs e)
-        {
-            if (IsLanguageSelected() && !IsSelectedIndexEqual())
-            {
-                OnTrainingStartRequested(this, e);
-            }        
-        }
-
         private void btnStartTest_Click(object sender, EventArgs e)
         {
-            if (IsLanguageSelected() && !IsSelectedIndexEqual())
-            {
-                OnTestStartRequested(this, e);
-            }
-        }
 
-        private void btnAddWord_Click(object sender, EventArgs e)
-        {
             if (IsLanguageSelected() && !IsSelectedIndexEqual())
             {
                 OnTestStartRequested(this, e);

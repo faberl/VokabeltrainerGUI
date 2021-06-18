@@ -26,6 +26,17 @@ namespace VokabeltrainerGUI
             vocabularyList.Add(newVocabular);
         }
 
+        private string GetNextWord()
+        {
+            return "";
+        }
+
+        private void LoadFromCSV()
+        {
+
+        }
+
+
 
 
         #endregion

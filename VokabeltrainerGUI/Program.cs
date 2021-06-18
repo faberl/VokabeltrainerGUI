@@ -16,7 +16,20 @@ namespace VokabeltrainerGUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainView());
+
+            //initialisieren von IStorage & VocabularyModel
+            IStorage storage = new CSVParser();
+            VocabularyModel vocabularyList = new VocabularyModel();
+            MainPresenter mainPresenter = new MainPresenter(storage, vocabularyList);
+            mainPresenter.R
+
+
+            //neuen Mainpresenter und übergeben von IStorage & VocabularyModel
+
+            //MainView.Run
+            
+
+
         }
     }
 }
