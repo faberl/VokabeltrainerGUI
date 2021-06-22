@@ -19,9 +19,11 @@ namespace VokabeltrainerGUI
 
             //initialisieren von IStorage & VocabularyModel
             IStorage storage = new CSVParser();
+            IView view = new MainView();
+
             VocabularyModel vocabularyList = new VocabularyModel();
-            MainPresenter mainPresenter = new MainPresenter(storage, vocabularyList);
-            mainPresenter.R
+            MainPresenter mainPresenter = new MainPresenter(storage, view, vocabularyList);
+            
 
 
             //neuen Mainpresenter und übergeben von IStorage & VocabularyModel

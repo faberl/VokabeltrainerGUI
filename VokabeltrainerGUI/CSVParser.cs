@@ -8,44 +8,26 @@ using System.IO;
 
 namespace VokabeltrainerGUI
 {
-    public class CSVParser: IStorage
+    public class CSVParser : IStorage
     {
-        string filePath = @"";
-        
+        private string filePath = @"..\\..\\Übersetzungen.csv";
+        private VocabularyModel _translationList;
+
+
 
         public CSVParser()
         {
-            
+
         }
+
 
         //wenn vokabeln hinzugefügt werden sollen hier die Vokabeln auf die CSV angehängt werden
         //Model verändern und dann ganzes neues Model hierherschicken und speichern 
-        public void AddWordsToCSV(string filePath, string[] newTranslation)
-        {
-            try
-            {
-                using (StreamWriter writer = new StreamWriter(filePath, true))
-                {
-                    string output = "";
-                    foreach (string word in newTranslation)
-                    {
-                        output += word + ";";
-                    }
-                    output = output.Remove(output.Length - 1);
-                    writer.Write(output);
-                }
-            }
-            catch (Exception)
-            {
 
-                throw;
-            }
-        }
-
-        //Soll die CSV Datei einlesen und eine Liste mit Vokabeln zurückgeben
-        public List<Vocabulary> parseVocabularyFromCSV()
+        #region wordMethods
+        public void loadWordsFromCSV()
         {
-            List<Vocabulary> translationList = new List<Vocabulary>();
+            _translationList = new VocabularyModel();
             string[] languagesArray;
             try
             {
@@ -61,11 +43,11 @@ namespace VokabeltrainerGUI
                         if (!line.StartsWith(languagesArray[0]))
                         {
                             translations = line.Split(';');
-                            translationList.Add(new Vocabulary { Languages = languagesArray, Translations = translations });
+                            Vocabulary newVocabulary = new Vocabulary(languagesArray, translations);
+                            _translationList.AddWord(newVocabulary);
                         }
                     }
                 }
-                return translationList;
             }
             catch (Exception)
             {
@@ -73,15 +55,48 @@ namespace VokabeltrainerGUI
             }
         }
 
+        //public void saveWordsToCSV()
+        //{
+        //    try
+        //    {
+        //        using (StreamWriter writer = new StreamWriter(filePath, true))
+        //        {
+          //          string output = "";
+            //        foreach (string word in newTranslation)
+              //      {
+                //        output += word + ";";
+        //            }
+          //          output = output.Remove(output.Length - 1);
+            //        writer.Write(output);
+              //  }
+           // }
+           // catch (Exception)
+          //  {
 
-        List<Vocabulary> IStorage.load()
+            //    throw;
+         //   }
+        //}
+
+        #endregion
+
+        #region statsMethods
+
+        public void loadStatsFromCSV()
         {
             throw new NotImplementedException();
         }
 
-        void IStorage.parseVocabularyFromCSV()
+        public void saveStatasToCSV()
         {
             throw new NotImplementedException();
         }
+
+        public void saveWordsToCSV()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
     }
 }

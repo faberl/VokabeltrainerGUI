@@ -10,34 +10,55 @@ namespace VokabeltrainerGUI
         //methode nextWord
 
         #region members
-        List<Vocabulary> vocabularyList;
+        public Vocabulary _vocabulary;
+        public string[] _languages;
+        private IStorage _csvParser;
         #endregion
 
         #region constructor 
         public VocabularyModel()
         {
-            vocabularyList = new List<Vocabulary>();
+            VocabularyList = new List<Vocabulary>();
+            _csvParser = new CSVParser();
+
         }
         #endregion
 
-        #region methods
-        private void AddVocabulary(Vocabulary newVocabular)
-        {
-            vocabularyList.Add(newVocabular);
-        }
+        #region properties
+        public List<Vocabulary> VocabularyList { get; private set; }
+        public string[] Languages { get; private set; }
+        #endregion
 
-        private string GetNextWord()
+
+        #region methods
+
+        public string GetNextRandomWord()
         {
             return "";
         }
 
-        private void LoadFromCSV()
+        public void LoadFromCSV()
         {
-
+            _csvParser.loadWordsFromCSV();
         }
 
+        public void AddWord(Vocabulary newVocabulary)
+        {
+            VocabularyList.Add(newVocabulary);
+        }
 
+        public string[] GetLanguages()
+        {
+            Languages = _vocabulary.GetLanguages();
 
+            return Languages;
+        }
+
+        public bool CheckingTranslation()
+        {
+
+            return false;
+        }
 
         #endregion
     }

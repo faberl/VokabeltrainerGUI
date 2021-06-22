@@ -1,6 +1,11 @@
 C:\Users\Erlacher Fabian\OneDrive\Desktop\FH\2 Semester\PRO2\VokabeltrainerGUI\VokabeltrainerGUI\obj\Debug\VokabeltrainerGUI.csprojAssemblyReference.cache
-C:\Users\Erlacher Fabian\OneDrive\Desktop\FH\2 Semester\PRO2\VokabeltrainerGUI\VokabeltrainerGUI\obj\Debug\VokabeltrainerGUI.InteractionView.resources
 C:\Users\Erlacher Fabian\OneDrive\Desktop\FH\2 Semester\PRO2\VokabeltrainerGUI\VokabeltrainerGUI\obj\Debug\VokabeltrainerGUI.MainView.resources
 C:\Users\Erlacher Fabian\OneDrive\Desktop\FH\2 Semester\PRO2\VokabeltrainerGUI\VokabeltrainerGUI\obj\Debug\VokabeltrainerGUI.Properties.Resources.resources
 C:\Users\Erlacher Fabian\OneDrive\Desktop\FH\2 Semester\PRO2\VokabeltrainerGUI\VokabeltrainerGUI\obj\Debug\VokabeltrainerGUI.csproj.GenerateResource.cache
 C:\Users\Erlacher Fabian\OneDrive\Desktop\FH\2 Semester\PRO2\VokabeltrainerGUI\VokabeltrainerGUI\obj\Debug\VokabeltrainerGUI.csproj.CoreCompileInputs.cache
+C:\Users\Erlacher Fabian\OneDrive\Desktop\FH\2 Semester\PRO2\VokabeltrainerGUI\VokabeltrainerGUI\bin\Debug\VokabeltrainerGUI.exe.config
+C:\Users\Erlacher Fabian\OneDrive\Desktop\FH\2 Semester\PRO2\VokabeltrainerGUI\VokabeltrainerGUI\bin\Debug\VokabeltrainerGUI.exe
+C:\Users\Erlacher Fabian\OneDrive\Desktop\FH\2 Semester\PRO2\VokabeltrainerGUI\VokabeltrainerGUI\bin\Debug\VokabeltrainerGUI.pdb
+C:\Users\Erlacher Fabian\OneDrive\Desktop\FH\2 Semester\PRO2\VokabeltrainerGUI\VokabeltrainerGUI\obj\Debug\VokabeltrainerGUI.TestView.resources
+C:\Users\Erlacher Fabian\OneDrive\Desktop\FH\2 Semester\PRO2\VokabeltrainerGUI\VokabeltrainerGUI\obj\Debug\VokabeltrainerGUI.exe
+C:\Users\Erlacher Fabian\OneDrive\Desktop\FH\2 Semester\PRO2\VokabeltrainerGUI\VokabeltrainerGUI\obj\Debug\VokabeltrainerGUI.pdb

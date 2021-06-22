@@ -7,8 +7,8 @@ namespace VokabeltrainerGUI
     class Vocabulary
     {
         #region members
-        private string[] _languages;
-        private string[] _translations;
+        public string[] _languages;
+        public string[] _translations;
         #endregion
 
         #region constructor

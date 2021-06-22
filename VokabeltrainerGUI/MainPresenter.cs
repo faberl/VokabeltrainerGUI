@@ -7,26 +7,50 @@ namespace VokabeltrainerGUI
     class MainPresenter
     {
         #region members
-        private VocabularyModel vocabularyModel;   
+        private VocabularyModel _vocabularyModel;
+        private TestPresenter _testPresenter;
+        private IView _mainView;
+        private IStorage _csvPersistor;
 
         #endregion
 
-        public MainPresenter(IStorage storage, VocabularyModel vocabularyModel)
-        {   
-            
+        #region constructor
+
+        public MainPresenter(IStorage storage, IView view, VocabularyModel vocabularyModel)
+        {
+            _vocabularyModel = new VocabularyModel();
+            _mainView = view;
+            _vocabularyModel = vocabularyModel;
+            _csvPersistor = storage;
+
+            SetupLinks();
+            _vocabularyModel.LoadFromCSV();
+
             //initialisieren von vocabularyModel 
             //aufrufen von LoadFromCSV
+        }
+        #endregion
+
+        private void SetupLinks()
+        {
+            _mainView.OnExitRequested += ExitProgram;
+            _mainView.OnTestStartRequested += StartTest;
         }
 
         public void Run()
         {
-            MainPresenter.Show();
-            Application.Run();
+            _mainView.Show();          
         }
 
-        public void StartTest()
+        private void ExitProgram(object sender, EventArgs e)
         {
+            //Application.Exit();
+        }
 
+        public void StartTest(object sender, EventArgs e)
+        {
+            _testPresenter = new TestPresenter();
+            
         }
 
 

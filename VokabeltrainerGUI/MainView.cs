@@ -10,16 +10,20 @@ using System.Windows.Forms;
 
 namespace VokabeltrainerGUI
 {
-    public partial class MainView : Form
+    public partial class MainView : Form, IView
     {
 
-        public MainView(IStorage storage, PersonListModel model)
+        private VocabularyModel _vocabularyModel;
+
+
+        public MainView()
         {
             InitializeComponent();
 
-            //in den Presenter? Oder Model?
-            Vocabulary vocabulary = new Vocabulary();
-            string[] languages = vocabulary.GetLanguages();
+            _vocabularyModel = new VocabularyModel();
+            _vocabularyModel.LoadFromCSV();
+
+            string[] languages = _vocabularyModel.GetLanguages();
 
             for (int i = 0; i < languages.Length; i++)
             {
@@ -31,21 +35,16 @@ namespace VokabeltrainerGUI
                 cbxLanguage2.Items.Add(languages[i]);
             }
 
+
+
             //Aufrufen von Model für reinladen der CSV Datei
-
-            InitializeComponent();
-        }
-
-        public void Run()
-        {
-            _mainView.Show();
-            Application.Run();
+            
         }
 
 
         public event EventHandler OnTestStartRequested;
-
         public event EventHandler OnExitRequested;
+
 
         #region Click Events
 
@@ -95,6 +94,11 @@ namespace VokabeltrainerGUI
         private void MainView_Load(object sender, EventArgs e)
         {
 
+        }
+
+        public void UpdateList(List<string> items)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -6,5 +6,19 @@ namespace VokabeltrainerGUI
 {
     class TestPresenter
     {
+
+
+
+        public TestPresenter()
+        {
+
+        }
+
+
+
+        private bool CheckingTranslation()
+        {
+            return false;
+        }
     }
 }
