@@ -18,8 +18,13 @@ namespace VokabeltrainerGUI
         #region constructor 
         public VocabularyModel()
         {
+
+        }
+
+        public VocabularyModel(IStorage csvParser)
+        {
             VocabularyList = new List<Vocabulary>();
-            _csvParser = new CSVParser();
+            _csvParser = csvParser;
 
         }
         #endregion

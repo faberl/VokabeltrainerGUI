@@ -13,17 +13,23 @@ namespace VokabeltrainerGUI
     public partial class MainView : Form, IView
     {
 
-        private VocabularyModel _vocabularyModel;
+        //mainpresenter deklarieren?
+
+        public event EventHandler OnTestStartRequested;
+        public event EventHandler OnExitRequested;
+
 
 
         public MainView()
         {
-            InitializeComponent();
+            InitializeComponent();  
+            
+        }
 
-            _vocabularyModel = new VocabularyModel();
-            _vocabularyModel.LoadFromCSV();
 
-            string[] languages = _vocabularyModel.GetLanguages();
+        #region methods
+        public void UpdateLanguages(object sender, string[] languages)
+        {
 
             for (int i = 0; i < languages.Length; i++)
             {
@@ -34,16 +40,8 @@ namespace VokabeltrainerGUI
             {
                 cbxLanguage2.Items.Add(languages[i]);
             }
-
-
-
-            //Aufrufen von Model für reinladen der CSV Datei
-            
         }
-
-
-        public event EventHandler OnTestStartRequested;
-        public event EventHandler OnExitRequested;
+        #endregion
 
 
         #region Click Events
@@ -63,6 +61,8 @@ namespace VokabeltrainerGUI
         }
         #endregion
 
+
+        #region checkingMethods
 
         private bool IsLanguageSelected()
         {
@@ -87,9 +87,11 @@ namespace VokabeltrainerGUI
             else
             {
                 return true;
-            }
-            
+            }    
         }
+
+        #endregion
+
 
         private void MainView_Load(object sender, EventArgs e)
         {

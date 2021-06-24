@@ -8,7 +8,6 @@ namespace VokabeltrainerGUI
     {
         void saveWordsToCSV();
         void loadWordsFromCSV();
-
         void loadStatsFromCSV();
         void saveStatasToCSV();
 

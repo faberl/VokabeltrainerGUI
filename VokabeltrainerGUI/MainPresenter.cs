@@ -10,24 +10,30 @@ namespace VokabeltrainerGUI
         private VocabularyModel _vocabularyModel;
         private TestPresenter _testPresenter;
         private IView _mainView;
-        private IStorage _csvPersistor;
 
         #endregion
 
+        #region Events
+        public event EventHandler<string[]> NewLanguagesUpdated;
+        #endregion
+
+
         #region constructor
 
-        public MainPresenter(IStorage storage, IView view, VocabularyModel vocabularyModel)
+        public MainPresenter(IView view, VocabularyModel vocabularyModel)
         {
-            _vocabularyModel = new VocabularyModel();
             _mainView = view;
             _vocabularyModel = vocabularyModel;
-            _csvPersistor = storage;
 
             SetupLinks();
+
             _vocabularyModel.LoadFromCSV();
 
-            //initialisieren von vocabularyModel 
-            //aufrufen von LoadFromCSV
+            string[] languages = _vocabularyModel.GetLanguages();
+            NewLanguagesUpdated.Invoke(this, languages);
+
+
+            //event welches view bescheid gibt das aktuelle sprachen verfügbar sind 
         }
         #endregion
 
