@@ -15,7 +15,6 @@ namespace VokabeltrainerGUI
         }
 
 
-
         private bool CheckingTranslation()
         {
             return false;

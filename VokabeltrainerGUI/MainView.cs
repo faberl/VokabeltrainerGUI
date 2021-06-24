@@ -22,8 +22,7 @@ namespace VokabeltrainerGUI
 
         public MainView()
         {
-            InitializeComponent();  
-            
+            InitializeComponent();             
         }
 
 

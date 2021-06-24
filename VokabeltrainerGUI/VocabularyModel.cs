@@ -10,8 +10,6 @@ namespace VokabeltrainerGUI
         //methode nextWord
 
         #region members
-        public Vocabulary _vocabulary;
-        public string[] _languages;
         private IStorage _csvParser;
         #endregion
 
@@ -25,7 +23,6 @@ namespace VokabeltrainerGUI
         {
             VocabularyList = new List<Vocabulary>();
             _csvParser = csvParser;
-
         }
         #endregion
 
