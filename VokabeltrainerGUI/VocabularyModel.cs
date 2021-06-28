@@ -7,10 +7,10 @@ namespace VokabeltrainerGUI
     class VocabularyModel
     {
         //presenter bekommt von hier wörter
-        //methode nextWord
 
         #region members
         private IStorage _csvParser;
+        private List<Vocabulary> _vocabularyList;
         #endregion
 
         #region constructor 
@@ -21,7 +21,8 @@ namespace VokabeltrainerGUI
 
         public VocabularyModel(IStorage csvParser)
         {
-            VocabularyList = new List<Vocabulary>();
+            _vocabularyList = new List<Vocabulary>();
+            _vocabularyList = VocabularyList;
             _csvParser = csvParser;
         }
         #endregion
@@ -31,35 +32,65 @@ namespace VokabeltrainerGUI
         public string[] Languages { get; private set; }
         #endregion
 
+        public string GetLanguage(int index)
+        {
+            return Languages[index];
+        }
 
         #region methods
 
-        public string GetNextRandomWord()
+        public string[] GetNextRandomWord(int firstLangIndex, int secLangIndex)
         {
-            return "";
+            bool wordInside = true;
+            string[] randomWord = new string[2];
+
+            do
+            {
+                var random = new Random();
+                int index = random.Next(VocabularyList.Count);
+                Vocabulary randomTranslation = VocabularyList[index];
+                randomWord[0] = randomTranslation.Translations[firstLangIndex];
+                randomWord[1] = randomTranslation.Translations[secLangIndex];
+
+            } while (!wordInside);
+
+
+            return randomWord;
         }
 
         public void LoadFromCSV()
         {
-            _csvParser.loadWordsFromCSV();
+            VocabularyList = _csvParser.loadWordsFromCSV();
+            Languages = _csvParser.getLanguages();
         }
 
         public void AddWord(Vocabulary newVocabulary)
         {
             VocabularyList.Add(newVocabulary);
+            Languages = newVocabulary.GetLanguages();
         }
 
-        public string[] GetLanguages()
+
+        public bool CheckingTranslation(string[] words, int indexLanguage1, int indexLanguage2)
         {
-            Languages = _vocabulary.GetLanguages();
+            string correctTranslation;
+            try
+            {
+                correctTranslation = VocabularyList.Find(x => x.Translations[indexLanguage1].Contains(words[0])).GetTranslations(indexLanguage2);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
-            return Languages;
-        }
-
-        public bool CheckingTranslation()
-        {
-
-            return false;
+            if (correctTranslation == words[1])
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         #endregion

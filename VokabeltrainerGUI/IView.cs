@@ -8,8 +8,10 @@ namespace VokabeltrainerGUI
 {
     public interface IView
     {
-        event EventHandler OnTestStartRequested;
+        event EventHandler<Tuple<int, int>> OnTestStartRequested;
         event EventHandler OnExitRequested;
+
+        void UpdateLanguages(object sender, string[] languages);
 
         void Show();
     }

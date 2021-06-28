@@ -21,9 +21,11 @@ namespace VokabeltrainerGUI
             IStorage storage = new CSVParser();
             IView view = new MainView();
 
+            Statistics statisticsModel = new Statistics();
             VocabularyModel vocabularyModel = new VocabularyModel(storage);
-            MainPresenter mainPresenter = new MainPresenter(view, vocabularyModel);
-
+            MainModel mainModel = new MainModel(storage);
+            MainPresenter mainPresenter = new MainPresenter(view, mainModel, vocabularyModel, statisticsModel) ;
+            
             mainPresenter.Run();
             
             

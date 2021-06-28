@@ -31,8 +31,8 @@ namespace VokabeltrainerGUI
         {
             this.lblInputTranslation = new System.Windows.Forms.Label();
             this.lblLanguage2 = new System.Windows.Forms.Label();
-            this.txbLanguage1 = new System.Windows.Forms.TextBox();
-            this.txbLanguage2 = new System.Windows.Forms.TextBox();
+            this.tbxLanguage1 = new System.Windows.Forms.TextBox();
+            this.tbxLanguage2 = new System.Windows.Forms.TextBox();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblLanguage1 = new System.Windows.Forms.Label();
@@ -41,11 +41,11 @@ namespace VokabeltrainerGUI
             // lblInputTranslation
             // 
             this.lblInputTranslation.AutoSize = true;
-            this.lblInputTranslation.Location = new System.Drawing.Point(164, 26);
+            this.lblInputTranslation.Location = new System.Drawing.Point(263, 30);
             this.lblInputTranslation.Name = "lblInputTranslation";
-            this.lblInputTranslation.Size = new System.Drawing.Size(371, 25);
+            this.lblInputTranslation.Size = new System.Drawing.Size(178, 25);
             this.lblInputTranslation.TabIndex = 0;
-            this.lblInputTranslation.Text = "Input Translation into the second field";
+            this.lblInputTranslation.Text = "Input Translation ";
             // 
             // lblLanguage2
             // 
@@ -56,21 +56,21 @@ namespace VokabeltrainerGUI
             this.lblLanguage2.TabIndex = 2;
             this.lblLanguage2.Text = "Language 2";
             // 
-            // txbLanguage1
+            // tbxLanguage1
             // 
-            this.txbLanguage1.Location = new System.Drawing.Point(92, 125);
-            this.txbLanguage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txbLanguage1.Name = "txbLanguage1";
-            this.txbLanguage1.Size = new System.Drawing.Size(185, 31);
-            this.txbLanguage1.TabIndex = 3;
+            this.tbxLanguage1.Location = new System.Drawing.Point(92, 125);
+            this.tbxLanguage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbxLanguage1.Name = "tbxLanguage1";
+            this.tbxLanguage1.Size = new System.Drawing.Size(185, 31);
+            this.tbxLanguage1.TabIndex = 3;
             // 
-            // txbLanguage2
+            // tbxLanguage2
             // 
-            this.txbLanguage2.Location = new System.Drawing.Point(425, 125);
-            this.txbLanguage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txbLanguage2.Name = "txbLanguage2";
-            this.txbLanguage2.Size = new System.Drawing.Size(185, 31);
-            this.txbLanguage2.TabIndex = 4;
+            this.tbxLanguage2.Location = new System.Drawing.Point(425, 125);
+            this.tbxLanguage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbxLanguage2.Name = "tbxLanguage2";
+            this.tbxLanguage2.Size = new System.Drawing.Size(185, 31);
+            this.tbxLanguage2.TabIndex = 4;
             // 
             // btnNext
             // 
@@ -110,8 +110,8 @@ namespace VokabeltrainerGUI
             this.ClientSize = new System.Drawing.Size(719, 318);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnNext);
-            this.Controls.Add(this.txbLanguage2);
-            this.Controls.Add(this.txbLanguage1);
+            this.Controls.Add(this.tbxLanguage2);
+            this.Controls.Add(this.tbxLanguage1);
             this.Controls.Add(this.lblLanguage2);
             this.Controls.Add(this.lblLanguage1);
             this.Controls.Add(this.lblInputTranslation);
@@ -127,8 +127,8 @@ namespace VokabeltrainerGUI
 
         private System.Windows.Forms.Label lblInputTranslation;
         private System.Windows.Forms.Label lblLanguage2;
-        private System.Windows.Forms.TextBox txbLanguage1;
-        private System.Windows.Forms.TextBox txbLanguage2;
+        private System.Windows.Forms.TextBox tbxLanguage1;
+        private System.Windows.Forms.TextBox tbxLanguage2;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblLanguage1;

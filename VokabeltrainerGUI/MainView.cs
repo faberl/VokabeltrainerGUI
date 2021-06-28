@@ -15,10 +15,8 @@ namespace VokabeltrainerGUI
 
         //mainpresenter deklarieren?
 
-        public event EventHandler OnTestStartRequested;
+        public event EventHandler<Tuple<int, int>> OnTestStartRequested;
         public event EventHandler OnExitRequested;
-
-
 
         public MainView()
         {
@@ -29,16 +27,21 @@ namespace VokabeltrainerGUI
         #region methods
         public void UpdateLanguages(object sender, string[] languages)
         {
-
+            cbxLanguage1.Items.Clear();
+            cbxLanguage2.Items.Clear();
             for (int i = 0; i < languages.Length; i++)
             {
                 cbxLanguage1.Items.Add(languages[i]);
             }
 
+            cbxLanguage1.SelectedItem = cbxLanguage1.Items[0];
+
             for (int i = 0; i < languages.Length; i++)
             {
                 cbxLanguage2.Items.Add(languages[i]);
             }
+
+            cbxLanguage2.SelectedItem = cbxLanguage2.Items[0];
         }
         #endregion
 
@@ -50,13 +53,13 @@ namespace VokabeltrainerGUI
 
             if (IsLanguageSelected() && !IsSelectedIndexEqual())
             {
-                OnTestStartRequested(this, e);
+                OnTestStartRequested?.Invoke(this, new Tuple<int, int>(cbxLanguage1.SelectedIndex, cbxLanguage2.SelectedIndex));
             }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            OnExitRequested(this, e);
+            OnExitRequested?.Invoke(this, e);
         }
         #endregion
 
@@ -81,11 +84,11 @@ namespace VokabeltrainerGUI
             if (cbxLanguage1.SelectedIndex == cbxLanguage2.SelectedIndex)
             {
                 MessageBox.Show("Select two different languages!");
-                return false;
+                return true;
             }
             else
             {
-                return true;
+                return false;
             }    
         }
 
@@ -95,11 +98,6 @@ namespace VokabeltrainerGUI
         private void MainView_Load(object sender, EventArgs e)
         {
 
-        }
-
-        public void UpdateList(List<string> items)
-        {
-            throw new NotImplementedException();
         }
     }
 }

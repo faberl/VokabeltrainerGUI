@@ -4,7 +4,7 @@ using System.Text;
 
 namespace VokabeltrainerGUI
 {
-    class Vocabulary
+    public class Vocabulary
     {
         #region members
         public string[] _languages;

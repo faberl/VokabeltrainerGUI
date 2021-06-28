@@ -7,7 +7,8 @@ namespace VokabeltrainerGUI
     interface IStorage
     {
         void saveWordsToCSV();
-        void loadWordsFromCSV();
+        List<Vocabulary> loadWordsFromCSV();
+        string[] getLanguages();
         void loadStatsFromCSV();
         void saveStatasToCSV();
 

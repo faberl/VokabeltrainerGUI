@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using System.Text;
 
 namespace VokabeltrainerGUI
@@ -7,9 +8,13 @@ namespace VokabeltrainerGUI
     class MainPresenter
     {
         #region members
-        private VocabularyModel _vocabularyModel;
+
+        private MainModel _mainModel;
         private TestPresenter _testPresenter;
+        private VocabularyModel _vocabularyModel;
+        private Statistics _statisticsModel;
         private IView _mainView;
+        
 
         #endregion
 
@@ -20,20 +25,18 @@ namespace VokabeltrainerGUI
 
         #region constructor
 
-        public MainPresenter(IView view, VocabularyModel vocabularyModel)
+        public MainPresenter(IView view, MainModel mainModel, VocabularyModel vocabularyModel, Statistics statisticsModel)
         {
             _mainView = view;
+            _mainModel = mainModel;
             _vocabularyModel = vocabularyModel;
+            _statisticsModel = statisticsModel;
 
             SetupLinks();
 
-            _vocabularyModel.LoadFromCSV();
-
-            string[] languages = _vocabularyModel.GetLanguages();
+            string[] languages = _mainModel.GetLanguages();
             NewLanguagesUpdated.Invoke(this, languages);
 
-
-            //event welches view bescheid gibt das aktuelle sprachen verfügbar sind 
         }
         #endregion
 
@@ -41,26 +44,31 @@ namespace VokabeltrainerGUI
         {
             _mainView.OnExitRequested += ExitProgram;
             _mainView.OnTestStartRequested += StartTest;
+
+            NewLanguagesUpdated += _mainView.UpdateLanguages;
+        }
+
+        private void UpdateStats(object sender, bool result)
+        {
+            _statisticsModel.UpdateStats(result);
         }
 
         public void Run()
         {
-            _mainView.Show();          
+            _mainView.Show();
+            Application.Run();
         }
 
         private void ExitProgram(object sender, EventArgs e)
         {
-            //Application.Exit();
+            Application.Exit();
         }
 
-        public void StartTest(object sender, EventArgs e)
+        public void StartTest(object sender,Tuple<int, int> selectedLanguages)
         {
-            _testPresenter = new TestPresenter();
-            
+            _testPresenter = new TestPresenter(new TestView(), _vocabularyModel, selectedLanguages.Item1, selectedLanguages.Item2);
+            _testPresenter.OnTranslationChecked += UpdateStats;
+            _testPresenter.Run();
         }
-
-
-
-
     }
 }

@@ -31,7 +31,7 @@ namespace VokabeltrainerGUI
 
         #region methods
 
-        private void UpdateStats(bool answer)
+        public void UpdateStats(bool answer)
         {
             if (answer == true)
             {
