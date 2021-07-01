@@ -32,25 +32,28 @@ namespace VokabeltrainerGUI
         public string[] Languages { get; private set; }
         #endregion
 
-        public string GetLanguage(int index)
+        public string GetLanguageWithIndex(int index)
         {
             return Languages[index];
         }
 
         #region methods
 
-        public string[] GetNextRandomWord(int firstLangIndex, int secLangIndex)
+        public string GetNextRandomWord(int firstLangIndex, int secLangIndex)
         {
-            bool wordInside = true;
-            string[] randomWord = new string[2];
+            bool wordInside = false;
+            string randomWord;
 
             do
             {
                 var random = new Random();
                 int index = random.Next(VocabularyList.Count);
                 Vocabulary randomTranslation = VocabularyList[index];
-                randomWord[0] = randomTranslation.Translations[firstLangIndex];
-                randomWord[1] = randomTranslation.Translations[secLangIndex];
+                randomWord = randomTranslation.Translations[firstLangIndex];
+                if (randomWord == "")
+                {
+                    wordInside = false;
+                }
 
             } while (!wordInside);
 
@@ -71,19 +74,19 @@ namespace VokabeltrainerGUI
         }
 
 
-        public bool CheckingTranslation(string[] words, int indexLanguage1, int indexLanguage2)
+        public bool CheckingTranslation(Tuple<string,string> words, int indexLanguage1, int indexLanguage2)
         {
             string correctTranslation;
             try
             {
-                correctTranslation = VocabularyList.Find(x => x.Translations[indexLanguage1].Contains(words[0])).GetTranslations(indexLanguage2);
+                correctTranslation = VocabularyList.Find(x => x.Translations[indexLanguage1].Contains(words.Item1)).GetTranslations(indexLanguage2);
             }
             catch (Exception)
             {
                 throw;
             }
 
-            if (correctTranslation == words[1])
+            if (correctTranslation == words.Item2)
             {
                 return true;
             }

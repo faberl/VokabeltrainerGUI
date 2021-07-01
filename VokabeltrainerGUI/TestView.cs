@@ -10,7 +10,7 @@ namespace VokabeltrainerGUI
 {
     public partial class TestView : Form
     {
-        public event EventHandler<string[]> OnNextWordRequested;
+        public event EventHandler<Tuple<string, string>> OnNextWordRequested;
         public event EventHandler OnExitRequested;
 
 
@@ -19,17 +19,14 @@ namespace VokabeltrainerGUI
             InitializeComponent();
         }
 
-        //Sagt bescheid sobald input eingegeben und der Button Next gedrückt wird
-
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            string[] selectedLanguages = new string[2];
+            string randomWord = tbxLanguage1.Text;
+            string userInput = tbxLanguage2.Text;
 
-            selectedLanguages[0] = tbxLanguage1.Text;
-            selectedLanguages[1] = tbxLanguage2.Text;
 
-            OnNextWordRequested(this, selectedLanguages);
+            OnNextWordRequested(this, new Tuple<string, string>(randomWord,userInput));
         }
 
         private void btnExit_Click(object sender, EventArgs e)
