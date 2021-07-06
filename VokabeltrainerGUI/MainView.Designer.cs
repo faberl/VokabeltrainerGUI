@@ -40,8 +40,9 @@ namespace VokabeltrainerGUI
             this.btnStartTest = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblStats = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.chartResults = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnResetStats = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.chartResults)).BeginInit();
             this.SuspendLayout();
             // 
             // lblLanguage1
@@ -83,7 +84,7 @@ namespace VokabeltrainerGUI
             // lblWelcome
             // 
             this.lblWelcome.AutoSize = true;
-            this.lblWelcome.Location = new System.Drawing.Point(215, 77);
+            this.lblWelcome.Location = new System.Drawing.Point(227, 77);
             this.lblWelcome.Name = "lblWelcome";
             this.lblWelcome.Size = new System.Drawing.Size(233, 25);
             this.lblWelcome.TabIndex = 4;
@@ -91,7 +92,7 @@ namespace VokabeltrainerGUI
             // 
             // btnStartTest
             // 
-            this.btnStartTest.Location = new System.Drawing.Point(214, 346);
+            this.btnStartTest.Location = new System.Drawing.Point(214, 307);
             this.btnStartTest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStartTest.Name = "btnStartTest";
             this.btnStartTest.Size = new System.Drawing.Size(234, 47);
@@ -102,7 +103,7 @@ namespace VokabeltrainerGUI
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(214, 424);
+            this.btnExit.Location = new System.Drawing.Point(214, 435);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(234, 46);
@@ -114,34 +115,48 @@ namespace VokabeltrainerGUI
             // lblStats
             // 
             this.lblStats.AutoSize = true;
-            this.lblStats.Location = new System.Drawing.Point(873, 28);
+            this.lblStats.Location = new System.Drawing.Point(885, 28);
             this.lblStats.Name = "lblStats";
             this.lblStats.Size = new System.Drawing.Size(173, 25);
             this.lblStats.TabIndex = 9;
             this.lblStats.Text = "Current statistics";
             // 
-            // chart1
+            // chartResults
             // 
+            this.chartResults.BackColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            this.chartResults.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(746, 77);
-            this.chart1.Name = "chart1";
+            this.chartResults.Legends.Add(legend1);
+            this.chartResults.Location = new System.Drawing.Point(693, 77);
+            this.chartResults.Name = "chartResults";
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Color = System.Drawing.Color.White;
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(449, 393);
-            this.chart1.TabIndex = 10;
-            this.chart1.Text = "chart1";
+            series1.Name = "S1";
+            this.chartResults.Series.Add(series1);
+            this.chartResults.Size = new System.Drawing.Size(502, 415);
+            this.chartResults.TabIndex = 10;
+            this.chartResults.Text = "chart1";
+            // 
+            // btnResetStats
+            // 
+            this.btnResetStats.Location = new System.Drawing.Point(214, 368);
+            this.btnResetStats.Name = "btnResetStats";
+            this.btnResetStats.Size = new System.Drawing.Size(234, 51);
+            this.btnResetStats.TabIndex = 11;
+            this.btnResetStats.Text = "Reset Statisitcs";
+            this.btnResetStats.UseVisualStyleBackColor = true;
+            this.btnResetStats.Click += new System.EventHandler(this.btnResetStats_Click);
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1232, 504);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.btnResetStats);
+            this.Controls.Add(this.chartResults);
             this.Controls.Add(this.lblStats);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnStartTest);
@@ -153,8 +168,7 @@ namespace VokabeltrainerGUI
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainView";
             this.Text = "Vokabeltrainer";
-            this.Load += new System.EventHandler(this.MainView_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartResults)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,7 +184,8 @@ namespace VokabeltrainerGUI
         private System.Windows.Forms.Button btnStartTest;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblStats;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartResults;
+        private System.Windows.Forms.Button btnResetStats;
     }
 }
 

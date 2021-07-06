@@ -6,8 +6,6 @@ namespace VokabeltrainerGUI
 {
     class VocabularyModel
     {
-        //presenter bekommt von hier wörter
-
         #region members
         private IStorage _csvParser;
         private List<Vocabulary> _vocabularyList;
@@ -32,12 +30,12 @@ namespace VokabeltrainerGUI
         public string[] Languages { get; private set; }
         #endregion
 
+        #region methods
+
         public string GetLanguageWithIndex(int index)
         {
             return Languages[index];
         }
-
-        #region methods
 
         public string GetNextRandomWord(int firstLangIndex, int secLangIndex)
         {
@@ -54,9 +52,12 @@ namespace VokabeltrainerGUI
                 {
                     wordInside = false;
                 }
+                else
+                {
+                    wordInside = true;
+                }
 
             } while (!wordInside);
-
 
             return randomWord;
         }
@@ -66,13 +67,6 @@ namespace VokabeltrainerGUI
             VocabularyList = _csvParser.loadWordsFromCSV();
             Languages = _csvParser.getLanguages();
         }
-
-        public void AddWord(Vocabulary newVocabulary)
-        {
-            VocabularyList.Add(newVocabulary);
-            Languages = newVocabulary.GetLanguages();
-        }
-
 
         public bool CheckingTranslation(Tuple<string,string> words, int indexLanguage1, int indexLanguage2)
         {

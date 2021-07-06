@@ -7,56 +7,70 @@ namespace VokabeltrainerGUI
 {
     class TestPresenter
     {
-        public event EventHandler<bool> OnTranslationChecked;
+        #region events
+        public event EventHandler<bool> OnUpdateStatistics;
+        #endregion
 
+        #region members
         private TestView _testView;
+        private VocabularyModel _VocabularyModel;
         private int _indexLang1;
         private int _indexLang2;
-        private VocabularyModel _model;
+        #endregion
 
+        #region constructor 
         public TestPresenter(TestView testView, VocabularyModel model, int indexLanguage1, int indexLanguage2)
         {
             _testView = testView;
-            _model = model;
-            _model.LoadFromCSV();
+            _VocabularyModel = model;
+            _VocabularyModel.LoadFromCSV();
             _indexLang1 = indexLanguage1;
             _indexLang2 = indexLanguage2;
 
             SetupLinks();
 
             _testView.UpdateLanguageLbl(model.GetLanguageWithIndex(indexLanguage1), model.GetLanguageWithIndex(indexLanguage2));
-
+            GetFirstRandomWord();
         }
+        #endregion
 
-        private void GetRandomWord(object sender, Tuple<string, string> randomWordAndTranslation)
-        {
-            
-            string randomWord = _model.GetNextRandomWord(_indexLang1, _indexLang2);
-
-        }
-
+        #region methods
         private void SetupLinks()
         {
-            _testView.OnNextWordRequested += CheckingTranslation;
             _testView.OnNextWordRequested += GetRandomWord;
+            _testView.OnCheckingWordRequested += CheckingTranslation;
             _testView.OnExitRequested += ExitProgram;
+        }
+
+        //TestView requested random word
+        private void GetRandomWord(object sender, EventArgs e)
+        {         
+            string randomWord = _VocabularyModel.GetNextRandomWord(_indexLang1, _indexLang2);
+            _testView.UpdateView(randomWord);
+        }
+
+        private void GetFirstRandomWord()
+        {
+            string randomWord = _VocabularyModel.GetNextRandomWord(_indexLang1, _indexLang2);
+            _testView.UpdateView(randomWord);
         }
 
         private void CheckingTranslation(object sender, Tuple<string, string> randomWordAndTranslation)
         {
             bool result;
-            result = _model.CheckingTranslation(randomWordAndTranslation, _indexLang1, _indexLang2);
-            OnTranslationChecked?.Invoke(this, result); //hier hören alle zu die an dem Ergebnis interessiert sind z.B Stats
+            result = _VocabularyModel.CheckingTranslation(randomWordAndTranslation, _indexLang1, _indexLang2);
+            OnUpdateStatistics?.Invoke(this, result); 
+        }
+
+        private void ExitProgram(object sender, EventArgs e)
+        {
+            _testView.Close();
         }
 
         public void Run()
         {
             _testView.Show();
         }
-
-        private void ExitProgram(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+        #endregion
     }
 }

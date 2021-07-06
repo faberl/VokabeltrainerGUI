@@ -10,9 +10,10 @@ namespace VokabeltrainerGUI
     {
         event EventHandler<Tuple<int, int>> OnTestStartRequested;
         event EventHandler OnExitRequested;
+        event EventHandler OnStatisticResetRequested;
 
         void UpdateLanguages(object sender, string[] languages);
-
+        void UpdateChart(object sender, int[] results);
         void Show();
     }
 }

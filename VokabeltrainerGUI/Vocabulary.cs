@@ -24,8 +24,7 @@ namespace VokabeltrainerGUI
         #endregion
 
 
-        #region properties
-       
+        #region properties    
         public string[] Languages
         {
             get
@@ -59,7 +58,7 @@ namespace VokabeltrainerGUI
             return Translations[index];
         }      
 
-        //returns all current Languages
+        //returns a array of current Languages
         public string[] GetLanguages()
         {
             return _languages;

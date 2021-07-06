@@ -61,6 +61,7 @@ namespace VokabeltrainerGUI
             this.tbxLanguage1.Location = new System.Drawing.Point(92, 125);
             this.tbxLanguage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxLanguage1.Name = "tbxLanguage1";
+            this.tbxLanguage1.ReadOnly = true;
             this.tbxLanguage1.Size = new System.Drawing.Size(185, 31);
             this.tbxLanguage1.TabIndex = 3;
             // 

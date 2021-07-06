@@ -10,21 +10,18 @@ namespace VokabeltrainerGUI
 {
     public class CSVParser : IStorage
     {
+        #region members
         private string filePath = @"..\\..\\Übersetzungen.csv";
-        //private VocabularyModel _translationList;
+        #endregion
 
-
-
+        #region constructor
         public CSVParser()
         {
 
         }
+        #endregion
 
-
-        //wenn vokabeln hinzugefügt werden sollen hier die Vokabeln auf die CSV angehängt werden
-        //Model verändern und dann ganzes neues Model hierherschicken und speichern 
-
-        #region wordMethods
+        #region methods
         public List<Vocabulary> loadWordsFromCSV()
         {
             List<Vocabulary> vocabularyList = new List<Vocabulary>();
@@ -48,7 +45,6 @@ namespace VokabeltrainerGUI
                         }
                     }
                 }
-
             }
             catch (Exception)
             {
@@ -84,24 +80,6 @@ namespace VokabeltrainerGUI
 
         #endregion
 
-        #region statsMethods
-
-        public void loadStatsFromCSV()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void saveStatasToCSV()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void saveWordsToCSV()
-        {
-            throw new NotImplementedException();
-        }
-
-        #endregion
 
     }
 }
